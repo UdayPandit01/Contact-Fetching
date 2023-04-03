@@ -9,7 +9,9 @@ const Clist = () => {
   useEffect(() => {
     getPermission();
   }, []);
+ 
 
+  // function to fetch contactList from device contacts
   const getPermission=()=>{
     PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
@@ -36,14 +38,7 @@ const Clist = () => {
       )
   }
 
-  // const keyExtractor = (item, index) => {
-  //   return item.recordID;
-  //   // return item?.recordID?.toString() || index.toString();
-  // };
-  // // const renderItem = ({item, index}) => {
-  // //   return <Contact contact={item} />;
-  // // };
-
+ // function to show first letter of name as contact icon
   const renderItem=({item})=>{
 
     const firstname=item.givenName
@@ -51,6 +46,8 @@ const Clist = () => {
     const sirname=item.familyName
     const second=sirname.charAt(0).toUpperCase();
 
+
+    // adding different colors at different contact icons
     let colors = ['#B9E9FC', '#AAE3E2', '#B3E5BE', '#ABCDEF'];
     let index = item.recordID;
 
@@ -96,10 +93,6 @@ const Clist = () => {
 };
 const styles = StyleSheet.create({
 
-  // ContactContainer:{
-  //   flex:2,
-  //   backgroundColor:'#7A86B6',
-  // },
 
   parent:{
     borderWidth:1,
@@ -128,14 +121,6 @@ const styles = StyleSheet.create({
     paddingHorizontal:20,
     alignItems:'center',
     backgroundColor:'#C8B6E2'
-  },
-
-  icon:{
-    // borderWidth:1,
-    // borderRadius:10,
-    // backgroundColor:'red',
-    // justifyContent:'flex-start',
-
   }, 
 
 
